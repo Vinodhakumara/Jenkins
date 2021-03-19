@@ -1,0 +1,19 @@
+---
+# vars file for jenkins
+java: "java-1.8.0"
+
+repos:
+ epel:
+    name: "EPEL"
+    url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm"
+    description: "EPEL release Yum repo"
+ jenkins:
+    name: "Jenkins"
+    url: "https://pkg.jenkins.io/redhat-stable/"
+    description: "Jenkins from Yum repo"
+softwares:
+ java:
+    name: "{{ java }}"
+ jenkins:
+    name: "jenkins"
+jenkins_key_rpm: "https://pkg.jenkins.io/redhat-stable/jenkins.io.key"
