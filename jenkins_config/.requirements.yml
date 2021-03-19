@@ -20,5 +20,4 @@
         name: "{{ item }}"
         state: present
       loop: "{{ librarie_names }}" 
-
 ...

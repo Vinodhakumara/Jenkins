@@ -3,7 +3,7 @@
 - name: add jenkins key
   apt_key:
     state: present
-    url: "{{ jenkins_key_rpm }}"
+    url: "{{ jenkins_key_rpmU }}"
 
 - name: "Set EPEL yum repository"
   apt_repository:
@@ -11,14 +11,14 @@
       repo: "{{ item.value.url }}"
       description: "{{ item.value.description }}"
   loop:
-      "{{ lookup('dict',repos) }}"    
+      "{{ lookup('dict',reposU) }}"    
 
 - name: "Install Java and Jenkins"
   apt:
       name: "{{ item.value.name }}" 
       state: present
   loop:
-      "{{ lookup('dict',softwares) }}"
+      "{{ lookup('dict',softwaresU) }}"
 
 - name: "Starting jenkins"
   service:
