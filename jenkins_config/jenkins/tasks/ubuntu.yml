@@ -1,25 +1,20 @@
 ---
 # tasks file for jenkins
 - name: add jenkins key
-  rpm_key:
+  apt_key:
     state: present
-    key: "{{ jenkins_key_rpm }}"
+    url: "{{ jenkins_key_rpm }}"
 
-- name: Repos
-  debug:
-      msg: "{{ item.value.description }} {{ item.value.name }}, {{ item.value.url }}"
-  loop:
-      "{{ lookup('dict',repos) }}"
 - name: "Set EPEL yum repository"
-  yum_repository:
-      name: "{{ item.value.name }}"
-      baseurl: "{{ item.value.url }}"
+  apt_repository:
+      filename: "{{ item.value.name }}"
+      repo: "{{ item.value.url }}"
       description: "{{ item.value.description }}"
   loop:
       "{{ lookup('dict',repos) }}"    
 
 - name: "Install Java and Jenkins"
-  yum:
+  apt:
       name: "{{ item.value.name }}" 
       state: present
   loop:
