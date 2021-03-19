@@ -1,11 +1,11 @@
 ---
 # tasks file for jenkins
 - name: using RHEL file
-  include_tasks: rehl.yml
+  include_tasks: rhel.yml
   when: ansible_distribution == "RedHat"
  
 - name: using CENTOS file
-  include_tasks: rehl.yml
+  include_tasks: centos.yml
   when: ansible_distribution == "CentOS"
 
 - name: using UBUNTU file
